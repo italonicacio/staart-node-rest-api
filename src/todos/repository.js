@@ -1,9 +1,6 @@
-const wait = (time) =>
-  new Promise(resolve =>
-    setTimeout(resolve, time)
-  )
+const { wait } = require('../utils')
 
-const todosDatabase = (() => {
+const TodosRepository = () => {
   let idSequence = 1
   const todos = {}
 
@@ -43,5 +40,8 @@ const todosDatabase = (() => {
     update,
     del,
   }
+}
 
-})()
+module.exports = {
+  TodosRepository,
+}
