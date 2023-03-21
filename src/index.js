@@ -1,6 +1,7 @@
 const express = require("express")
 const hello = require('./hello/routes')
 const todos = require('./todos/routes')
+const users = require('./users/routes')
 
 const logger = require('./middlewares/logger')
 const errorHandler = require('./middlewares/error')
@@ -11,6 +12,8 @@ app.use(express.json())
 app.use(logger())
 app.use('/hello', hello)
 app.use('/todos', todos)
+app.use('/users', users)
+
 app.use(errorHandler())
 
 app
