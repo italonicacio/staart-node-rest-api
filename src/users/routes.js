@@ -49,9 +49,8 @@ const updateUser = async (req, res) => {
 
   // repetido
   const registered = await repository.get(id)
-  if (!registered) {
-    return res.status(404).send(NotFound)
-  }
+  
+  
 
   const user = { ...body, id }
   const updated = await repository.update(user)
@@ -68,11 +67,8 @@ const deleteUser = async (req, res) => {
   // e se for NaN ?
   const id = parseInt(req.params.id)
 
-  // repetido
-  const registered = await repository.get(id)
-  if (!registered) {
-    return res.status(404).send(NotFound)
-  }
+  await repository.get(id)
+
 
   await repository.del(id)
   res.status(204).send()
@@ -95,9 +91,7 @@ const getUser = async (req, res) => {
 
   // repetido
   const user = await repository.get(id)
-  if (!user) {
-    return res.status(404).send(NotFound)
-  }
+
 
   res.status(200).send(user)
 }
