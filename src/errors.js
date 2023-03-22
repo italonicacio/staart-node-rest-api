@@ -13,6 +13,14 @@ class NotFoundError extends DomainError {
   }
 }
 
+class ValidationError extends DomainError {
+  constructor({ message = 'Invalid parameters', validations }) {
+    super(message)
+    this.validations = validations
+  }
+}
+
 module.exports = {
   NotFoundError,
+  ValidationError,
 }
